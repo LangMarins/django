@@ -8,6 +8,7 @@ django = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
+mysql-connector-python = "*"
 
 [dev-packages]
 
