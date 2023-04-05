@@ -1,0 +1,20 @@
+{% extends 'app_general/components/base.html' %}
+
+{% block site_title %}{{ food.title }}{% endblock site_title %}
+
+{% block content %}
+{% if food is not None %}
+<div>
+    <h3>{{ food.title }}</h3>
+    <p>{{ food.price|floatformat:'g' }} ฿</p>
+    {% if food.is_premium %}
+        <p>**PREMIUM**</p>
+    {% endif %}
+    <p>โปรโมชั่นถึงวันที่ {{ food.promotion_end_at|date:'j N Y' }}</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis doloremque ratione quasi nulla minima, rem est ipsum in corporis quod cupiditate possimus incidunt culpa quaerat et! Omnis quod tenetur architecto.</p>
+</div>
+{% else %}
+    <p>ไม่พบเมนู</p>
+{% endif %}
+{% endblock content %}
+

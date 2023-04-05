@@ -1,0 +1,21 @@
+{% extends 'app_general/components/base.html' %}
+
+{% block site_title %}All_menu{% endblock site_title %}
+
+{% block content %}
+<div>
+    <h1>Foodsssss</h1>
+    {% for food in foods  %}
+        <div style="background-color: aqua;">
+            <h3><a href="{% url 'food' food.id %}">{{ food.title }}</a></h3>
+                <p>{{ food.price|floatformat:'g' }} ฿</p>
+                {% if food.is_premium %}
+            <p>**PREMIUM**</p>
+        {% endif %}
+        <p>โปรโมชั่นถึงวันที่ {{ food.promotion_end_at|date:'j N Y' }}</p>
+        </div>
+        {% empty%}  {% comment %} ถ้าข้อมูลตรงส่วน all_foods ใน views.py ไม่มีก็ให้แสดงข้อตวามข้างล่าง  {% endcomment %}
+        <p>ยังไม่มีข้อมูล</p>
+    {% endfor %}
+</div>
+{% endblock content %}
